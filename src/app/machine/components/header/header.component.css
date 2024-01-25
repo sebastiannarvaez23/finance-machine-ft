@@ -1,0 +1,39 @@
+.header {
+  padding: 0px 50px 0px 10px;
+  display: grid;
+  grid-template-columns: 90% 10%;
+}
+
+.top-options {
+  display: flex;
+}
+
+.top-icon {
+  margin: 10px 0px 10px auto;
+}
+
+.top-icon img {
+  width: 45px;
+}
+
+.top-icon img:hover {
+  cursor: pointer;
+}
+
+.profile-picture {
+  width: 45px;
+  height: 45px;
+  margin: 10px 0px 10px auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.profile-picture img:hover {
+  cursor: pointer;
+}
