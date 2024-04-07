@@ -1,80 +1,11 @@
 <div class="contain-rows">
-    <div class="row-body-table">
-        <span>ARRIENDO REF 129</span>
-        <span>$ 0.00</span>
-        <span>12/08</span>
-        <span><a href="#">Pagar</a></span>
-    </div>
-
-    <hr>
-
-    <div class="row-body-table">
-        <span>COMIDA</span>
-        <span>$ 0.00</span>
-        <span>12/08</span>
-        <span><a href="#">Pagar</a></span>
-    </div>
-
-    <hr>
-
-    <div class="row-body-table">
-        <span>GASOLINA</span>
-        <span>$ 0.00</span>
-        <span>12/08</span>
-        <span><a href="#">Pagar</a></span>
-    </div>
-
-    <hr>
-
-    <div class="row-body-table">
-        <span>INTERNET</span>
-        <span>$ 0.00</span>
-        <span>12/08</span>
-        <span><a href="#">Pagar</a></span>
-    </div>
-
-    <hr>
-
-    <div class="row-body-table">
-        <span>LEARN ENGLISH B1+</span>
-        <span>$ 0.00</span>
-        <span>12/08</span>
-        <span><a href="#">Pagar</a></span>
-    </div>
-
-    <hr>
-
-    <div class="row-body-table">
-        <span>OCIO</span>
-        <span>$ 0.00</span>
-        <span>12/08</span>
-        <span><a href="#">Pagar</a></span>
-    </div>
-
-    <hr>
-
-    <div class="row-body-table">
-        <span>PELUQUEADA</span>
-        <span>$ 0.00</span>
-        <span>12/08</span>
-        <span><a href="#">Pagar</a></span>
-    </div>
-
-    <hr>
-
-    <div class="row-body-table">
-        <span>PLAN MOVISTAR</span>
-        <span>$ 0.00</span>
-        <span>12/08</span>
-        <span><a href="#">Pagar</a></span>
-    </div>
-
-    <hr>
-
-    <div class="row-body-table">
-        <span>GYM</span>
-        <span>$ 0.00</span>
-        <span>12/08</span>
-        <span><a href="#">Pagar</a></span>
+    <div *ngFor="let payment of payments">
+        <div class="row-body-table">
+            <span>{{ payment.description }}</span>
+            <span>{{payment.payment}}</span>
+            <span>12/08</span>
+            <span><a href="{{payment.paymentlink}}">Pagar</a></span>
+        </div>
+        <hr>
     </div>
 </div>
