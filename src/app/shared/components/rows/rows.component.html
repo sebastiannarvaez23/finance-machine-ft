@@ -1,8 +1,16 @@
 <div class="contain-rows">
+    <div class="row-head-table">
+        <span></span>
+        <span>Descripción</span>
+        <span>Pago</span>
+        <span>Día Pago</span>
+        <span>Link</span>
+    </div>
     <div *ngFor="let payment of payments; let i = index">
         <div class="row-body-table">
             <span>
-                <input [(ngModel)]="payment.paid" type="checkbox">
+                <input [(ngModel)]="payment.paid" type="checkbox"
+                    [title]="payment.paid ? '¡Pago realizado!' : '¿Ya realizaste este pago?'">
             </span>
             <span>{{ payment.description }}</span>
             <span>{{ payment.payment }}</span>

@@ -19,9 +19,18 @@ hr {
   border-radius: 10px;
 }
 
+
 .contain-rows .row-body-table {
   width: 80%;
   margin: 20px auto;
+  display: grid;
+  grid-template-columns: 10% 50% 15% 15% 10%;
+}
+
+.contain-rows .row-head-table {
+  margin-bottom: 30px;
+  width: 80%;
+  margin: 10px auto 30px auto;
   display: grid;
   grid-template-columns: 10% 50% 15% 15% 10%;
 }
