@@ -3,12 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'shared-card-primary',
-  standalone: true,
-  imports: [
-    CommonModule,
-  ],
   templateUrl: './card-primary.component.html',
-  styleUrls: ['./card-primary.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./card-primary.component.css']
 })
 export class CardPrimaryComponent { }

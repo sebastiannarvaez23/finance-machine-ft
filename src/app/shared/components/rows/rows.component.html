@@ -1,10 +1,13 @@
 <div class="contain-rows">
-    <div *ngFor="let payment of payments">
+    <div *ngFor="let payment of payments; let i = index">
         <div class="row-body-table">
+            <span>
+                <input [(ngModel)]="payment.paid" type="checkbox">
+            </span>
             <span>{{ payment.description }}</span>
-            <span>{{payment.payment}}</span>
-            <span>12/08</span>
-            <span><a href="{{payment.paymentlink}}">Pagar</a></span>
+            <span>{{ payment.payment }}</span>
+            <span>{{ payment.payday }}</span>
+            <span><a href="{{ payment.paymentlink }}" target="_blank">Pagar</a></span>
         </div>
         <hr>
     </div>
