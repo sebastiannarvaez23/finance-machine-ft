@@ -13,7 +13,9 @@
         <div class="income">
             <div class="details">
                 <h3>Ingreso Mensual</h3>
-                <span class="principal-income">$ 13'745.940 COP</span>
+                <span class="principal-income">
+                    {{ income && income.basic ? formatToCurrency(income.basic) : '0'}}
+                </span>
                 <h3 class="secondary-info">Monto pendiente de pago</h3>
                 <span class="secondary-info value">$ 3'450.000 COP</span>
                 <h3 class="secondary-info">Monto pendiente de pago</h3>

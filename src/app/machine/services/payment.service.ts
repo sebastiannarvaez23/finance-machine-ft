@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of, map } from 'rxjs';
-import { Payment } from '../interfaces/payments';
+import { Payment } from '../interfaces/payment';
 
 @Injectable({ providedIn: 'root' })
-export class MachineService {
-    private apiUrl: string = 'http://localhost:8080/';
+export class PaymentService {
+    private apiUrl: string = 'http://localhost:8001/';
 
     constructor(private http: HttpClient) { }
 
