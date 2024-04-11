@@ -1,0 +1,11 @@
+<div class="contain-rows">
+    <div class="row-head-table">
+        <span *ngFor="let key of getKeys(data[0])">{{ key }}</span>
+    </div>
+    <div *ngFor="let item of data; let i = index">
+        <div class="row-body-table">
+            <span *ngFor="let key of getKeys(item)">{{ getValueAsString(item, key) }}</span>
+        </div>
+        <hr>
+    </div>
+</div>

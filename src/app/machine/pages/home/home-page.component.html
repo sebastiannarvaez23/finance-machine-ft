@@ -5,7 +5,8 @@
             <div class="title">
                 <h2>Próximos Pagos</h2>
             </div>
-            <app-rows [payments]='payments'></app-rows>
+            <!-- <app-rows [payments]='payments'></app-rows> -->
+            <shared-table [data]='payments'></shared-table>
             <div class="manage-payments">
                 <button class="btn-manage-payments">Administrar pagos</button>
             </div>
