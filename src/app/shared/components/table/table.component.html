@@ -25,10 +25,11 @@
                     </ng-container>
                 </span>
                 <ng-container *ngIf="isLast">
-                    <span *ngFor="let additionalColum of additionalDataColumns">
-                        <ng-container *ngIf="additionalColum.type === 'img'">
-                            <button class="btn-img-row">
-                                <img class="img-row" src="{{ additionalColum.urlImg }}" alt="">
+                    <span *ngFor="let additionalColumn of additionalDataColumns">
+                        <ng-container *ngIf="additionalColumn.type === 'img'">
+                            <button class="btn-img-row"
+                                (click)="additionalColumn.resource && additionalColumn.resource(item['id'])">
+                                <img class="img-row" src="{{ additionalColumn.urlImg }}" alt="">
                             </button>
                         </ng-container>
                     </span>

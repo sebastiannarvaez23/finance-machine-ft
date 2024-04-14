@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of, map } from 'rxjs';
-import { Payment } from '../interfaces/payment';
+import { Payment } from '../../interfaces/payment';
 
 @Injectable({ providedIn: 'root' })
 export class PaymentService {
@@ -14,6 +14,14 @@ export class PaymentService {
         return this.http.get<Payment[]>(url)
             .pipe(
                 catchError(() => of([]))
+            );
+    }
+
+    deletePayment(id: string): Observable<Payment> {
+        const url: string = `${this.apiUrl}payment/${id}`;
+        return this.http.delete<Payment>(url)
+            .pipe(
+                catchError(() => of())
             );
     }
 }

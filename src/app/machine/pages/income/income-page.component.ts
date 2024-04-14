@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Payment } from '../../interfaces/payment';
 import { TableColumn } from 'src/app/shared/interfaces/table-colum';
-import { PaymentService } from '../../services/payment.service';
+import { PaymentService } from '../../services/payment/payment.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,8 +19,24 @@ export class IncomePageComponent {
         { name: "Día pago", width: "13", type: "string", show: true, relatedToDataColumn: true },
         { name: "Link", width: "13", type: "link", show: true, relatedToDataColumn: true },
         { name: "Pagado", width: "13", type: "checkbox", show: true, relatedToDataColumn: true },
-        { name: "Editar", width: "10", type: "img", show: true, relatedToDataColumn: false, urlImg: "../assets/imgs/editing.png" },
-        { name: "Eliminar", width: "10", type: "img", show: true, relatedToDataColumn: false, urlImg: "../assets/imgs/delete.png" },
+        {
+            name: "Editar",
+            width: "10",
+            type: "img",
+            show: true,
+            relatedToDataColumn: false,
+            urlImg: "../assets/imgs/editing.png",
+            resource: (id) => alert('Boton editar presionado ' + id)
+        },
+        {
+            name: "Eliminar",
+            width: "10",
+            type: "img",
+            show: true,
+            relatedToDataColumn: false,
+            urlImg: "../assets/imgs/delete.png",
+            resource: (id) => this.deletePayment(id)
+        },
     ];
 
     constructor(
@@ -34,5 +50,16 @@ export class IncomePageComponent {
                 if (!payments) return this.router.navigateByUrl('');
                 return this.payments = payments;
             })
+    }
+
+    deletePayment(id: string): void {
+        this.paymentService.deletePayment(id).subscribe(() => {
+            alert('Pago eliminado correctamente');
+            this.paymentService.getAllPayments()
+                .subscribe((payments) => {
+                    if (!payments) return this.router.navigateByUrl('');
+                    return this.payments = payments;
+                })
+        });
     }
 }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { PaymentService } from '../../services/payment.service';
+import { PaymentService } from '../../services/payment/payment.service';
 import { Router } from '@angular/router';
 import { Payment } from '../../interfaces/payment';
-import { IncomeService } from '../../services/income.service';
+import { IncomeService } from '../../services/income/income.service';
 import { Income } from '../../interfaces/income';
 import { tap } from 'rxjs/operators';
 import { TableColumn } from 'src/app/shared/interfaces/table-colum';

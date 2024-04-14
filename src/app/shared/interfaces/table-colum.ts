@@ -7,4 +7,5 @@ export interface TableColumn {
     show: boolean;
     relatedToDataColumn: boolean;
     urlImg?: string;
+    resource?: (id: string) => void;
 }
