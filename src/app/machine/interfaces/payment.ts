@@ -1,7 +1,7 @@
 export interface Payment {
+    paid: boolean;
     description: string;
     payment: number;
-    paid: boolean;
     payday: string;
     paymentlink: string;
 }

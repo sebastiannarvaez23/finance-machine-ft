@@ -1,10 +1,23 @@
 <div class="contain-rows">
-    <div class="row-head-table">
-        <span *ngFor="let key of getKeys(data[0])">{{ key }}</span>
+    <div class="row-head-table" [style.gridTemplateColumns]="columSizes">
+        <span *ngFor="let header of headers">
+            {{ header.name }}
+        </span>
     </div>
     <div *ngFor="let item of data; let i = index">
-        <div class="row-body-table">
-            <span *ngFor="let key of getKeys(item)">{{ getValueAsString(item, key) }}</span>
+        <div class="row-body-table" [style.gridTemplateColumns]="columSizes">
+            <span *ngFor="let key of getKeys(item); let i = index;">
+                <ng-container *ngIf="headers[i].type === 'boolean'">
+                    <input type="checkbox" [ngModel]="item[key]"
+                        [title]="item[key] ? '¡Pago realizado!' : '¿Ya realizaste este pago?'">
+                </ng-container>
+                <ng-container *ngIf="headers[i].type === 'string'">
+                    {{ item[key] }}
+                </ng-container>
+                <ng-container *ngIf="headers[i].type === 'link'">
+                    <a href="{{ item[key] }}" target="_blank">Pagar</a>
+                </ng-container>
+            </span>
         </div>
         <hr>
     </div>

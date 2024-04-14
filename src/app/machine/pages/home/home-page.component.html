@@ -5,8 +5,10 @@
             <div class="title">
                 <h2>Próximos Pagos</h2>
             </div>
-            <!-- <app-rows [payments]='payments'></app-rows> -->
-            <shared-table [data]='payments'></shared-table>
+
+            <!-- <app-rows [payments]="payments"></app-rows> -->
+            <shared-table [headers]="paymentsHeaders" [data]="payments"></shared-table>
+
             <div class="manage-payments">
                 <button class="btn-manage-payments">Administrar pagos</button>
             </div>
@@ -15,14 +17,14 @@
             <div class="details">
                 <h3>Ingreso Mensual</h3>
                 <span class="principal-income">
-                    {{ income && income.basic ? formatToCurrency(income.basic) : '0'}}
+                    {{ income && income.basic ? formatToCurrency(income.basic) : "0"}}
                 </span>
                 <h3 class="secondary-info">Monto pendiente de pago</h3>
-                <span class="secondary-info value">$ 3'450.000 COP</span>
+                <span class="secondary-info value">$ 3"450.000 COP</span>
                 <h3 class="secondary-info">Monto pendiente de pago</h3>
                 <span class="secondary-info value">$ -21.000 COP</span>
                 <h3 class="secondary-info">Total ahorrado</h3>
-                <span class="secondary-info value">$ 57'000.000 COP</span>
+                <span class="secondary-info value">$ 57"000.000 COP</span>
             </div>
             <div class="increment-income">
                 <button class="btn-increment-income">Aumentar ingreso</button>

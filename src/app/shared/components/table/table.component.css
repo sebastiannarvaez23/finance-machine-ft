@@ -1,0 +1,36 @@
+hr {
+    width: 80%;
+    border-color: var(--very-like);
+}
+
+.contain-rows {
+    position: relative;
+    height: 55vh;
+    overflow: scroll;
+}
+
+.contain-rows::-webkit-scrollbar {
+    width: 7px;
+    display: none;
+}
+
+.contain-rows::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.contain-rows .row-body-table {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.contain-rows .row-head-table {
+    margin-bottom: 30px;
+    width: 80%;
+    margin: 10px auto 30px auto;
+}
+
+.contain-rows .row-body-table,
+.contain-rows .row-head-table {
+    display: grid;
+}

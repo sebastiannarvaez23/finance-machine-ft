@@ -5,6 +5,7 @@ import { Payment } from '../../interfaces/payment';
 import { IncomeService } from '../../services/income.service';
 import { Income } from '../../interfaces/income';
 import { tap } from 'rxjs/operators';
+import { TableColumn } from 'src/app/shared/interfaces/tableColum';
 
 @Component({
     selector: 'home-page',
@@ -15,6 +16,14 @@ export class HomePageComponent {
 
     public payments: Payment[] = [];
     public income: Income | null = null;
+    public paymentsHeaders: TableColumn[] = [
+        { name: "id", width: "8", type: "string" },
+        { name: "Descripción", width: "40", type: "string" },
+        { name: "Pago", width: "15", type: "string" },
+        { name: "Día pago", width: "15", type: "string" },
+        { name: "Link", width: "15", type: "link" },
+        { name: "Pagado", width: "15", type: "boolean" },
+    ];
 
     constructor(
         public paymentService: PaymentService,

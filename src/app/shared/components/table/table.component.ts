@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Indexed } from '../../interfaces/indexed';
+import { TableColumn } from '../../interfaces/tableColum';
 
 @Component({
     selector: 'shared-table',
@@ -7,15 +8,25 @@ import { Indexed } from '../../interfaces/indexed';
     styleUrls: ['./table.component.css']
 })
 export class TableComponent<T extends Indexed> {
-    @Input() data: T[] = [];
+
+    @Input() public data: T[] = [];
+    @Input() public headers: TableColumn[] = [];
+
+    public columSizes: string = "";
 
     constructor() { }
+
+    ngOnInit() {
+        this.getColumnSize();
+    }
 
     getKeys(obj: T): string[] {
         return Object.keys(obj);
     }
 
-    getValueAsString(item: T, key: string): string {
-        return item[key].toString();
+    getColumnSize(): void {
+        let porcColum: string = "";
+        this.headers.forEach((header) => porcColum = porcColum + header.width + "% ");
+        this.columSizes = `${porcColum}`;
     }
 }
