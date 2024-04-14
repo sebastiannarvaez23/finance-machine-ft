@@ -6,18 +6,34 @@
     </div>
     <div *ngFor="let item of data; let i = index">
         <div class="row-body-table" [style.gridTemplateColumns]="columSizes">
-            <span *ngFor="let key of getKeys(item); let i = index;">
-                <ng-container *ngIf="headers[i].type === 'boolean'">
-                    <input type="checkbox" [ngModel]="item[key]"
-                        [title]="item[key] ? '¡Pago realizado!' : '¿Ya realizaste este pago?'">
+            <ng-container *ngFor="let key of getKeys(item); let i = index; let isLast = last;">
+                <span>
+                    <ng-container *ngIf="headers[i].type === 'checkbox'">
+                        <input type="checkbox" [ngModel]="item[key]"
+                            [title]="item[key] ? '¡Pago realizado!' : '¿Ya realizaste este pago?'">
+                    </ng-container>
+                    <ng-container *ngIf="headers[i].type === 'string'">
+                        {{ item[key] }}
+                    </ng-container>
+                    <ng-container *ngIf="headers[i].type === 'link'">
+                        <a href="{{ item[key] }}" target="_blank">Pagar</a>
+                    </ng-container>
+                    <ng-container *ngIf="headers[i].type === 'img'">
+                        <button class="btn-img-row">
+                            <img class="img-row" src="{{ headers[i].urlImg }}" alt="">
+                        </button>
+                    </ng-container>
+                </span>
+                <ng-container *ngIf="isLast">
+                    <span *ngFor="let additionalColum of additionalDataColumns">
+                        <ng-container *ngIf="additionalColum.type === 'img'">
+                            <button class="btn-img-row">
+                                <img class="img-row" src="{{ additionalColum.urlImg }}" alt="">
+                            </button>
+                        </ng-container>
+                    </span>
                 </ng-container>
-                <ng-container *ngIf="headers[i].type === 'string'">
-                    {{ item[key] }}
-                </ng-container>
-                <ng-container *ngIf="headers[i].type === 'link'">
-                    <a href="{{ item[key] }}" target="_blank">Pagar</a>
-                </ng-container>
-            </span>
+            </ng-container>
         </div>
         <hr>
     </div>

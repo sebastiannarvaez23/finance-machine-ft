@@ -1,9 +1,12 @@
 <div class="principal-contain">
     <machine-header></machine-header>
-
     <shared-card-primary>
         <div class="title">
             <h2>Administra tus pagos</h2>
         </div>
+        <shared-table [data]="payments" [headers]="headersPayments"></shared-table>
     </shared-card-primary>
+    <div class="pnl-btn">
+        <button>Agregar un pago</button>
+    </div>
 </div>

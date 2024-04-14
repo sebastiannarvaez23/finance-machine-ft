@@ -4,4 +4,6 @@ export interface Payment {
     payment: number;
     payday: string;
     paymentlink: string;
+    editing?: null;
+    deleting?: null;
 }

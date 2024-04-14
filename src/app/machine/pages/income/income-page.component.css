@@ -1,3 +1,9 @@
 .principal-contain {
     margin: 20px 20px 20px 100px;
 }
+
+.pnl-btn {
+    width: 90%;
+    padding: 20px;
+    text-align: end;
+}

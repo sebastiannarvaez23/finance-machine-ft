@@ -34,3 +34,17 @@ hr {
 .contain-rows .row-head-table {
     display: grid;
 }
+
+.btn-img-row {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+}
+
+.btn-img-row:hover {
+    cursor: pointer;
+}
+
+.img-row {
+    width: 20px;
+}
