@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Payment } from '../../interfaces/payment';
 import { TableColumn } from 'src/app/shared/interfaces/table-colum';
-import { PaymentService } from '../../services/payment/payment.service';
 import { Router } from '@angular/router';
+import { PaymentFacadeService } from '../../services/payment/facade.service';
 
 @Component({
     selector: 'income-page',
@@ -40,26 +40,37 @@ export class IncomePageComponent {
     ];
 
     constructor(
-        public paymentService: PaymentService,
+        public paymentFacadeService: PaymentFacadeService,
         public router: Router
     ) { }
 
     ngOnInit() {
-        this.paymentService.getAllPayments()
-            .subscribe((payments) => {
-                if (!payments) return this.router.navigateByUrl('');
-                return this.payments = payments;
-            })
+        this.getAllPayments();
+    }
+
+    getAllPayments() {
+        this.paymentFacadeService.getAllPayments().subscribe(
+            (payments) => {
+                this.payments = payments;
+            },
+            (error) => {
+                alert('Error al obtener los pagos: ' + error);
+                this.router.navigateByUrl('/error');
+            }
+        );
     }
 
     deletePayment(id: string): void {
-        this.paymentService.deletePayment(id).subscribe(() => {
-            alert('Pago eliminado correctamente');
-            this.paymentService.getAllPayments()
-                .subscribe((payments) => {
-                    if (!payments) return this.router.navigateByUrl('');
-                    return this.payments = payments;
-                })
-        });
+        this.paymentFacadeService.deletePayment(id).subscribe(
+            () => {
+                // Recargar la lista de pagos después de eliminar
+                this.getAllPayments();
+                alert('Pago eliminado correctamente');
+            },
+            (error) => {
+                alert('Error al eliminar el pago: ' + error);
+                this.router.navigateByUrl('/error');
+            }
+        );
     }
 }
