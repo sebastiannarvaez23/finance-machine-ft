@@ -1,9 +1,9 @@
+<div class="row-head-table" [style.gridTemplateColumns]="columSizes">
+    <span *ngFor="let header of headers">
+        <b>{{ header.name }}</b>
+    </span>
+</div>
 <div class="contain-rows">
-    <div class="row-head-table" [style.gridTemplateColumns]="columSizes">
-        <span *ngFor="let header of headers">
-            {{ header.name }}
-        </span>
-    </div>
     <div *ngFor="let item of data; let i = index">
         <div class="row-body-table" [style.gridTemplateColumns]="columSizes">
             <ng-container *ngFor="let key of getKeys(item); let i = index; let isLast = last;">
@@ -38,4 +38,7 @@
         </div>
         <hr>
     </div>
+</div>
+<div class="footer-table">
+    <span>Se encontraron 50 registros</span>
 </div>

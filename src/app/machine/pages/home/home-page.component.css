@@ -47,11 +47,11 @@ button:hover {
 
 }
 
-.income {
+.payment {
     padding: 40px;
 }
 
-.principal-income {
+.principal-payment {
     font-size: 45px;
 }
 
@@ -63,11 +63,11 @@ button:hover {
     font-size: 20px;
 }
 
-.increment-income {
+.increment-payment {
     margin: 30px 4px 4px 4px;
 }
 
-.btn-increment-income {
+.btn-increment-payment {
     background-color: var(--primary-color);
     color: var(--very-white);
     border-radius: 10px;

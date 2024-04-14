@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { PaymentFacadeService } from '../../services/payment/facade.service';
 
 @Component({
-    selector: 'income-page',
-    templateUrl: './income-page.component.html',
-    styleUrls: ['./income-page.component.css'],
+    selector: 'payment-page',
+    templateUrl: './payment-page.component.html',
+    styleUrls: ['./payment-page.component.css'],
 })
-export class IncomePageComponent {
+export class PaymentPageComponent {
 
     public payments: Payment[] = [];
     public headersPayments: TableColumn[] = [

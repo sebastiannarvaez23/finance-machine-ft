@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { PaymentService } from '../../services/payment/payment.service';
 import { Router } from '@angular/router';
 import { Payment } from '../../interfaces/payment';
-import { IncomeService } from '../../services/income/income.service';
-import { Income } from '../../interfaces/income';
 import { tap } from 'rxjs/operators';
 import { TableColumn } from 'src/app/shared/interfaces/table-colum';
+import { IncomeService } from '../../services/income/income.service';
+import { PaymentService } from '../../services/payment/payment.service';
+import { Income } from '../../interfaces/income';
 
 @Component({
     selector: 'home-page',
@@ -26,8 +26,8 @@ export class HomePageComponent {
     ];
 
     constructor(
-        public paymentService: PaymentService,
         public incomeService: IncomeService,
+        public paymentService: PaymentService,
         private router: Router
     ) { }
 
