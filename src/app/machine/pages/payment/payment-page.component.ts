@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Payment } from '../../interfaces/payment';
-import { TableColumn } from 'src/app/shared/interfaces/table-colum';
+import { Payment } from '../../interfaces/payment.interface';
+import { TableColumn } from 'src/app/shared/interfaces/table-colum.interface';
 import { Router } from '@angular/router';
 import { PaymentFacadeService } from '../../services/payment/facade.service';
 
@@ -63,7 +63,6 @@ export class PaymentPageComponent {
     deletePayment(id: string): void {
         this.paymentFacadeService.deletePayment(id).subscribe(
             () => {
-                // Recargar la lista de pagos después de eliminar
                 this.getAllPayments();
                 alert('Pago eliminado correctamente');
             },

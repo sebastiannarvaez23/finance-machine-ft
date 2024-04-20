@@ -20,11 +20,11 @@
                     {{ income && income.basic ? formatToCurrency(income.basic) : "0"}}
                 </span>
                 <h3 class="secondary-info">Monto pendiente de pago</h3>
-                <span class="secondary-info value">$ {{ monthlyBalance && monthlyBalance.pendingAmount ?
+                <span class="secondary-info value">{{ monthlyBalance && monthlyBalance.pendingAmount ?
                     formatToCurrency(monthlyBalance.pendingAmount) : "0"}}
                     COP</span>
                 <h3 class="secondary-info">Descuadre</h3>
-                <span class="secondary-info value">$ {{ monthlyBalance && monthlyBalance.disbalance ?
+                <span class="secondary-info value">{{ monthlyBalance && monthlyBalance.disbalance ?
                     formatToCurrency(monthlyBalance.disbalance) : "0"}}
                     COP</span>
 

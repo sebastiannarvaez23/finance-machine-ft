@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of, map } from 'rxjs';
-import { Income } from '../../interfaces/income';
+import { Income } from '../../interfaces/income.interface';
 
 @Injectable({ providedIn: 'root' })
 export class IncomeService {

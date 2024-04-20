@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of, map } from 'rxjs';
-import { Payment } from '../../interfaces/payment';
-import { MonthlyBalance } from '../../interfaces/monthly-balance';
+import { Payment } from '../../interfaces/payment.interface';
+import { MonthlyBalance } from '../../interfaces/monthly-balance.interface';
 
 @Injectable({ providedIn: 'root' })
 export class PaymentService {

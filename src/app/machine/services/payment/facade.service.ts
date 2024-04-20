@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Payment } from '../../interfaces/payment';
+import { Payment } from '../../interfaces/payment.interface';
 import { PaymentService } from "./payment.service";
 import { Router } from "@angular/router";
 import { EMPTY, Observable, catchError, throwError } from "rxjs";
-import { MonthlyBalance } from "../../interfaces/monthly-balance";
+import { MonthlyBalance } from "../../interfaces/monthly-balance.interface";
 
 @Injectable({ providedIn: 'root' })
 export class PaymentFacadeService {
@@ -14,13 +14,12 @@ export class PaymentFacadeService {
     ) { }
 
     getAllPayments(): Observable<Payment[]> {
-        return this.paymentService.getAllPayments()
-            .pipe(
-                catchError((error) => {
-                    console.error('Error al obtener los pagos:', error);
-                    return throwError(error);
-                })
-            );
+        return this.paymentService.getAllPayments().pipe(
+            catchError((error) => {
+                console.error('Error al obtener los pagos:', error);
+                return throwError(error);
+            })
+        );
     }
 
     getMonthlyBalance(): Observable<MonthlyBalance> {

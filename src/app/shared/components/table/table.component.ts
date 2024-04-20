@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Indexed } from '../../interfaces/indexed';
-import { TableColumn } from '../../interfaces/table-colum';
+import { Indexed } from '../../interfaces/indexed.interface';
+import { TableColumn } from '../../interfaces/table-colum.interface';
 
 @Component({
     selector: 'shared-table',

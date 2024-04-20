@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Payment } from '../../interfaces/payment';
+import { Payment } from '../../interfaces/payment.interface';
 import { tap } from 'rxjs/operators';
-import { TableColumn } from 'src/app/shared/interfaces/table-colum';
+import { TableColumn } from 'src/app/shared/interfaces/table-colum.interface';
 import { IncomeService } from '../../services/income/income.service';
-import { PaymentService } from '../../services/payment/payment.service';
-import { Income } from '../../interfaces/income';
-import { MonthlyBalance } from '../../interfaces/monthly-balance';
+import { Income } from '../../interfaces/income.interface';
+import { MonthlyBalance } from '../../interfaces/monthly-balance.interface';
+import { PaymentFacadeService } from '../../services/payment/facade.service';
 
 @Component({
     selector: 'home-page',
@@ -29,17 +29,33 @@ export class HomePageComponent {
 
     constructor(
         public incomeService: IncomeService,
-        public paymentService: PaymentService,
+        public paymentFacadeService: PaymentFacadeService,
         private router: Router
     ) { }
 
     ngOnInit(): void {
-        this.paymentService.getAllPayments()
-            .subscribe((payments) => {
-                if (!payments) return this.router.navigateByUrl('');
-                return this.payments = payments;
-            })
+        this.getAllPayments();
+        this.getLastIncome();
+        this.getMonthlyBalance();
+    }
 
+    formatToCurrency(value: number): string {
+        return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value);
+    }
+
+    getAllPayments(): void {
+        this.paymentFacadeService.getAllPayments()
+            .subscribe(
+                (payments: Payment[]) => {
+                    this.payments = payments;
+                },
+                (error) => {
+                    console.error('Error al obtener los pagos:', error);
+                }
+            );
+    }
+
+    getLastIncome(): void {
         this.incomeService.getLastIncome()
             .pipe(
                 tap((income) => {
@@ -48,8 +64,10 @@ export class HomePageComponent {
                 })
             )
             .subscribe();
+    }
 
-        this.paymentService.getMonthlyBalance()
+    getMonthlyBalance(): void {
+        this.paymentFacadeService.getMonthlyBalance()
             .pipe(
                 tap((monthlyBalance) => {
                     if (!monthlyBalance) this.router.navigateByUrl('');
@@ -57,9 +75,5 @@ export class HomePageComponent {
                 })
             )
             .subscribe();
-    }
-
-    formatToCurrency(value: number): string {
-        return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value);
     }
 }
