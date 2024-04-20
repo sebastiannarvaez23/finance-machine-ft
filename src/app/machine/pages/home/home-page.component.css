@@ -51,7 +51,7 @@ button:hover {
     padding: 40px;
 }
 
-.principal-payment {
+.principal-income {
     font-size: 45px;
 }
 
@@ -63,11 +63,17 @@ button:hover {
     font-size: 20px;
 }
 
-.increment-payment {
+.increment-income {
     margin: 30px 4px 4px 4px;
 }
 
-.btn-increment-payment {
+.principal-contain .app-body .income .details hr {
+    width: 70%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.btn-increment-income {
     background-color: var(--primary-color);
     color: var(--very-white);
     border-radius: 10px;

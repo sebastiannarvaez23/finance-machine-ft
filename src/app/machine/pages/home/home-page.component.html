@@ -10,21 +10,27 @@
             <shared-table [headers]="paymentsHeaders" [data]="payments"></shared-table>
 
             <div class="manage-payments">
-                <button class="btn-manage-payments">Administrar pagos</button>
+                <a href="payment"><button class="btn-manage-payments">Administrar pagos</button></a>
             </div>
         </shared-card-primary>
         <div class="income">
             <div class="details">
-                <h3>Ingreso Mensual</h3>
+                <h2>Ingreso Mensual</h2>
                 <span class="principal-income">
                     {{ income && income.basic ? formatToCurrency(income.basic) : "0"}}
                 </span>
                 <h3 class="secondary-info">Monto pendiente de pago</h3>
-                <span class="secondary-info value">$ 3"450.000 COP</span>
-                <h3 class="secondary-info">Monto pendiente de pago</h3>
-                <span class="secondary-info value">$ -21.000 COP</span>
+                <span class="secondary-info value">$ {{ monthlyBalance && monthlyBalance.pendingAmount ?
+                    formatToCurrency(monthlyBalance.pendingAmount) : "0"}}
+                    COP</span>
+                <h3 class="secondary-info">Descuadre</h3>
+                <span class="secondary-info value">$ {{ monthlyBalance && monthlyBalance.disbalance ?
+                    formatToCurrency(monthlyBalance.disbalance) : "0"}}
+                    COP</span>
+
+                <hr>
                 <h3 class="secondary-info">Total ahorrado</h3>
-                <span class="secondary-info value">$ 57"000.000 COP</span>
+                <span class="secondary-info value">$ 57'000.000 COP</span>
             </div>
             <div class="increment-income">
                 <button class="btn-increment-income">Aumentar ingreso</button>

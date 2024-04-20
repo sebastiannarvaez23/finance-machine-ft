@@ -3,6 +3,7 @@ import { Payment } from '../../interfaces/payment';
 import { PaymentService } from "./payment.service";
 import { Router } from "@angular/router";
 import { EMPTY, Observable, catchError, throwError } from "rxjs";
+import { MonthlyBalance } from "../../interfaces/monthly-balance";
 
 @Injectable({ providedIn: 'root' })
 export class PaymentFacadeService {
@@ -20,6 +21,15 @@ export class PaymentFacadeService {
                     return throwError(error);
                 })
             );
+    }
+
+    getMonthlyBalance(): Observable<MonthlyBalance> {
+        return this.paymentService.getMonthlyBalance()
+            .pipe(
+                catchError((error) => {
+                    console.error('Error al obtener los pagos:', error);
+                    return throwError(error);
+                }));
     }
 
     deletePayment(id: string): Observable<Payment> {
