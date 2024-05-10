@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Payment } from '../../interfaces/payment.interface';
 import { TableColumn } from 'src/app/shared/interfaces/table-colum.interface';
 import { Router } from '@angular/router';
-import { PaymentFacadeService } from '../../services/payment/facade.service';
+import { PaymentService } from '../../services/payment/payment.service';
 
 @Component({
     selector: 'payment-page',
@@ -40,7 +40,7 @@ export class PaymentPageComponent {
     ];
 
     constructor(
-        public paymentFacadeService: PaymentFacadeService,
+        public paymentService: PaymentService,
         public router: Router
     ) { }
 
@@ -49,27 +49,29 @@ export class PaymentPageComponent {
     }
 
     getAllPayments() {
-        this.paymentFacadeService.getAllPayments().subscribe(
-            (payments) => {
-                this.payments = payments;
-            },
-            (error) => {
-                alert('Error al obtener los pagos: ' + error);
-                this.router.navigateByUrl('/error');
-            }
-        );
+        this.paymentService.getAllPayments()
+            .subscribe(
+                (payments) => {
+                    this.payments = payments;
+                },
+                (error) => {
+                    alert('Error al obtener los pagos: ' + error);
+                    this.router.navigateByUrl('/error');
+                }
+            );
     }
 
     deletePayment(id: string): void {
-        this.paymentFacadeService.deletePayment(id).subscribe(
-            () => {
-                this.getAllPayments();
-                alert('Pago eliminado correctamente');
-            },
-            (error) => {
-                alert('Error al eliminar el pago: ' + error);
-                this.router.navigateByUrl('/error');
-            }
-        );
+        this.paymentService.deletePayment(id)
+            .subscribe(
+                () => {
+                    this.getAllPayments();
+                    alert('Pago eliminado correctamente');
+                },
+                (error) => {
+                    alert('Error al eliminar el pago: ' + error);
+                    this.router.navigateByUrl('/error');
+                }
+            );
     }
 }

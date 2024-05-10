@@ -6,7 +6,7 @@ import { TableColumn } from 'src/app/shared/interfaces/table-colum.interface';
 import { IncomeService } from '../../services/income/income.service';
 import { Income } from '../../interfaces/income.interface';
 import { MonthlyBalance } from '../../interfaces/monthly-balance.interface';
-import { PaymentFacadeService } from '../../services/payment/facade.service';
+import { PaymentService } from '../../services/payment/payment.service';
 
 @Component({
     selector: 'home-page',
@@ -29,7 +29,7 @@ export class HomePageComponent {
 
     constructor(
         public incomeService: IncomeService,
-        public paymentFacadeService: PaymentFacadeService,
+        public paymentService: PaymentService,
         private router: Router
     ) { }
 
@@ -44,7 +44,7 @@ export class HomePageComponent {
     }
 
     getAllPayments(): void {
-        this.paymentFacadeService.getAllPayments()
+        this.paymentService.getAllPayments()
             .subscribe(
                 (payments: Payment[]) => {
                     this.payments = payments;
@@ -57,23 +57,27 @@ export class HomePageComponent {
 
     getLastIncome(): void {
         this.incomeService.getLastIncome()
-            .pipe(
-                tap((income) => {
+            .subscribe(
+                (income) => {
                     if (!income) this.router.navigateByUrl('');
                     else this.income = income;
-                })
-            )
-            .subscribe();
+                },
+                (error) => {
+                    console.error('Error al obtener los pagos:', error);
+                }
+            );
     }
 
     getMonthlyBalance(): void {
-        this.paymentFacadeService.getMonthlyBalance()
-            .pipe(
-                tap((monthlyBalance) => {
+        this.paymentService.getMonthlyBalance()
+            .subscribe(
+                (monthlyBalance) => {
                     if (!monthlyBalance) this.router.navigateByUrl('');
                     else this.monthlyBalance = monthlyBalance;
-                })
-            )
-            .subscribe();
+                },
+                (error) => {
+                    console.error('Error al obtener los pagos:', error);
+                }
+            );
     }
 }
