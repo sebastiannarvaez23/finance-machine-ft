@@ -1,4 +1,4 @@
-<div class="page principal-contain">
+<div class="page">
     <machine-header></machine-header>
     <div class="app-body">
         <shared-card-primary class="next-payments">
@@ -32,9 +32,12 @@
                 <span class="secondary-info value">$ 57'000.000 COP</span>
             </div>
             <div class="increment-income">
-                <button class="btn-increment-income">Aumentar ingreso</button>
+                <button (click)="openAddPaymentModal()" class="btn-increment-income">Aumentar ingreso</button>
             </div>
         </div>
     </div>
 </div>
+<shared-modal [title]="'Crear Pago'" [isVisible]="isAddPaymentModalVisible" (close)="closeAddPaymentModal()">
+    <machine-form-income [lblBtnSend]="'Crear'"></machine-form-income>
+</shared-modal>
 <shared-loading-sppiner></shared-loading-sppiner>

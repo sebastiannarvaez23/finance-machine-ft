@@ -1,0 +1,35 @@
+<div class="container-form">
+    <form>
+        <div class="form">
+            <div class="field">
+                <label for="basic">Ingreso Basico</label>
+                <input placeholder="Digite valor del ingreso basico." id="basic" name="basic" value="{{data.basic}}"
+                    type="text">
+            </div>
+            <div class="field">
+                <label for="additional">Ingreso Adicional</label>
+                <input placeholder="Digite valor del ingreso adicional." id="additional" name="additional"
+                    value="{{data.additional}}" type="text">
+            </div>
+            <div class="field">
+                <label for="company">Empresa</label>
+                <div class="select-container">
+                    <select name="company" id="company">
+                        <option value="1">Codesa</option>
+                        <option value="2">Coomeva</option>
+                        <option value="3">Johanna Ortiz</option>
+                        <option value="4">Gestionar TIC</option>
+                    </select>
+                    <button type="button" (click)="openAddCompanyModal()">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="options">
+            <button type="submit">{{lblBtnSend}}</button>
+        </div>
+    </form>
+</div>
+
+<shared-modal [title]="'Crear Empresa'" [isVisible]="isAddCompanyModalVisible" (close)="closeAddCompanyModal()">
+    <machine-form-company [lblBtnSend]="'Crear'"></machine-form-company>
+</shared-modal>

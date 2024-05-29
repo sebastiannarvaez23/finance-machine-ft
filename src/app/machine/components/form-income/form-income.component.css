@@ -1,0 +1,45 @@
+.container-form {
+    width: 60vh;
+    margin: 12px;
+}
+
+.form {
+    margin: 40px 80px;
+}
+
+.options {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.field {
+    margin: 8px 0;
+    width: 100%;
+}
+
+.field label,
+.field input {
+    margin: 4px 0;
+    width: 100%;
+    display: block;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.field select {
+    margin: 4px 0;
+    width: 80%;
+    flex-grow: 1;
+}
+
+.field button {
+    width: 15%;
+    margin-left: 8px;
+    flex-shrink: 0;
+    margin-left: 12px;
+    font-size: 20px;
+}

@@ -27,6 +27,8 @@ export class HomePageComponent {
         { name: "Pagado", width: "13", type: "checkbox", show: true, relatedToDataColumn: true },
     ];
 
+    isAddPaymentModalVisible: boolean = false;
+
     constructor(
         public incomeService: IncomeService,
         public paymentService: PaymentService,
@@ -79,5 +81,13 @@ export class HomePageComponent {
                     console.error('Error al obtener los pagos:', error);
                 }
             );
+    }
+
+    openAddPaymentModal() {
+        this.isAddPaymentModalVisible = true;
+    }
+
+    closeAddPaymentModal() {
+        this.isAddPaymentModalVisible = false;
     }
 }
