@@ -12,6 +12,13 @@ import { PaymentService } from '../../services/payment/payment.service';
 export class PaymentPageComponent {
 
     public payments: Payment[] = [];
+    dataEditForm: Payment = {
+        paid: false,
+        description: "",
+        payment: 0,
+        payday: "",
+        paymentlink: ""
+    };
     public headersPayments: TableColumn[] = [
         { name: "id", width: "8", type: "string", show: true, relatedToDataColumn: true },
         { name: "Descripción", width: "20", type: "string", show: true, relatedToDataColumn: true },
@@ -26,7 +33,7 @@ export class PaymentPageComponent {
             show: true,
             relatedToDataColumn: false,
             urlImg: "../assets/imgs/editing.png",
-            resource: (id) => alert('Boton editar presionado ' + id)
+            resource: (data) => this.openEditModal(data)
         },
         {
             name: "Eliminar",
@@ -35,9 +42,14 @@ export class PaymentPageComponent {
             show: true,
             relatedToDataColumn: false,
             urlImg: "../assets/imgs/delete.png",
-            resource: (id) => this.deletePayment(id)
+            resource: (data) => this.deletePayment(data.id)
         },
     ];
+
+    /* Variables Modals */
+
+    isEditModalVisible: boolean = false;
+    isAddModalVisible: boolean = false;
 
     constructor(
         public paymentService: PaymentService,
@@ -73,5 +85,24 @@ export class PaymentPageComponent {
                     this.router.navigateByUrl('/error');
                 }
             );
+    }
+
+    // Functions Modals
+
+    openEditModal(data: Payment) {
+        this.dataEditForm = data;
+        this.isEditModalVisible = true;
+    }
+
+    closeEditModal() {
+        this.isEditModalVisible = false;
+    }
+
+    openAddModal() {
+        this.isAddModalVisible = true;
+    }
+
+    closeAddModal() {
+        this.isAddModalVisible = false;
     }
 }

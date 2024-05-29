@@ -1,3 +1,5 @@
+import { Payment } from "src/app/machine/interfaces/payment.interface";
+
 export type FieldType = 'string' | 'checkbox' | 'number' | 'link' | 'img';
 
 export interface TableColumn {
@@ -7,5 +9,5 @@ export interface TableColumn {
     show: boolean;
     relatedToDataColumn: boolean;
     urlImg?: string;
-    resource?: (id: string) => void;
+    resource?: (data: any) => void;
 }

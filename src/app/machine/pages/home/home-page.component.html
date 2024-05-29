@@ -1,16 +1,15 @@
-<div class="principal-contain">
+<div class="page principal-contain">
     <machine-header></machine-header>
     <div class="app-body">
         <shared-card-primary class="next-payments">
-            <div class="title">
-                <h2>Próximos Pagos</h2>
-            </div>
-
-            <!-- <app-rows [payments]="payments"></app-rows> -->
-            <shared-table [headers]="paymentsHeaders" [data]="payments"></shared-table>
-
-            <div class="manage-payments">
-                <a href="payment"><button class="btn-manage-payments">Administrar pagos</button></a>
+            <div class="next-payments-contain">
+                <div class="title">
+                    <h2>Próximos Pagos</h2>
+                </div>
+                <shared-table [headers]="paymentsHeaders" [data]="payments"></shared-table>
+                <div class="manage-payments">
+                    <a href="payment"><button class="btn-manage-payments">Administrar pagos</button></a>
+                </div>
             </div>
         </shared-card-primary>
         <div class="income">

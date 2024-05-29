@@ -28,7 +28,7 @@
                     <span *ngFor="let additionalColumn of additionalDataColumns">
                         <ng-container *ngIf="additionalColumn.type === 'img'">
                             <button class="btn-img-row"
-                                (click)="additionalColumn.resource && additionalColumn.resource(item['id'])">
+                                (click)="additionalColumn.resource && additionalColumn.resource(item)">
                                 <img class="img-row" src="{{ additionalColumn.urlImg }}" alt="">
                             </button>
                         </ng-container>

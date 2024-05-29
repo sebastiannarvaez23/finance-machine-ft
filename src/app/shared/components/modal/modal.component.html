@@ -1,0 +1,11 @@
+<div *ngIf="isVisible">
+    <shared-layout-blur (click)="closeModal()">
+        <shared-card-primary class="container" (click)="$event.stopPropagation()">
+            <h1>{{title}}</h1>
+            <hr>
+            <div class="content-modal">
+                <ng-content></ng-content>
+            </div>
+        </shared-card-primary>
+    </shared-layout-blur>
+</div>

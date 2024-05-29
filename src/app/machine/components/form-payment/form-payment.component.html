@@ -1,0 +1,28 @@
+<div class="container-form">
+    <form>
+        <div class="form">
+            <div class="field">
+                <label for="description">Descripción</label>
+                <input placeholder="Digite descripción" id="description" name="description" value="{{data.description}}"
+                    type="text">
+            </div>
+            <div class="field">
+                <label for="payment">Valor del Pago</label>
+                <input placeholder="Digite valor del Pago" id="payment" name="payment" value="{{data.payment}}"
+                    type="text">
+            </div>
+            <div class="field">
+                <label for="payday">Día del Pago</label>
+                <input placeholder="Digite día del Pago" id="payday" name="payday" value="{{data.payday}}" type="text">
+            </div>
+            <div class="field">
+                <label for="paymentlink">Link de pago</label>
+                <input placeholder="Digite link de pago" id="paymentlink" name="paymentlink"
+                    value="{{data.paymentlink}}" type="text">
+            </div>
+        </div>
+        <div class="options">
+            <button type="submit">{{lblBtnSend}}</button>
+        </div>
+    </form>
+</div>
